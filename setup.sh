@@ -1,0 +1,1 @@
+sudo python36 -m pip install flask
