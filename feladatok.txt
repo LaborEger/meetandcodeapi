@@ -1,0 +1,84 @@
+
+
+Feladatok
+
+
+1. feladat: bemutatkozás
+
+    Írj magadról egy API-t, ami az alábbi kérésre:
+    
+        GET /
+    
+    Az alábbi választ adja, 200-as válaszkóddal:
+    
+        {
+            "name": "A saját neved",
+            "statements": ["Állítás 1", "Állítás 2", "Állítás 3"]
+        }
+    
+    ahol az állítások valamilyen érdekes, vicces állítások rólad, de csak az egyikük lehet igaz.
+    Pl. "Egyszer körbebringáztam a Balatont."
+    Az, hogy hányadik állítás igaz, legyen véletlen szerű.
+
+
+2. feladat: áruld el, melyik állítás az igaz
+
+    Bővítsd ki az API-dat az alábbiak szerint:
+    
+        2.1. Állítások
+        
+            Az alábbi kérésekre 
+                - GET /statement/0
+                - GET /statement/1
+                - GET /statement/2
+            
+            200-as válaszkóddal az alábbi választ adja:
+            
+                Ha az állítás igaz:
+                    {
+                        "statement": "Igaz állítás",
+                        "istrue": true
+                    }
+                Ha hamis:
+                    {
+                        "statement": "Hamis állítás",
+                        "istrue": false
+                    }
+        
+        2.2. Nem létező állítások
+            
+            GET /statement/3 
+            vagy minden más, 0, 1 vagy 2-től eltérő számra vagy egyéb karakterre végződő kérésre
+            404-es választ ad
+            
+3. feladat: barátkozás
+
+    Egészítsd ki az API-dat azzal, hogy a /guess címre POST metódussal küldött hívást az alábbi adatokat fogadja:
+        {
+            "from": "Név",
+            "truestatement": x
+        }
+    ahol az x 0, 1 vagy 2 lehet
+    
+    Ha az x annak az állításnak a száma, amelyik helyes (ne feledd, az első száma a 0!), akkor a válasz legyen 200-as kóddal:
+        {
+            "message": "Helyes tipp, felvettelek a barátaim közé."
+        }
+
+    Ha az x olyan állításnak a száma, amelyik nem helyes, akkor a válasz legyen 400-as kóddal:
+        {
+            "message": "Sajnálom, nem jó a tipped."
+        }
+
+4. feladat: batár lista
+
+    Egészítsd ki az 1. feladatban adott választ a barátaid listájával, amit a "friends" mezőbe helyezel el, pl:
+        {
+            "name": "A saját neved",
+            "statements": ["Állítás 1", "Állítás 2", "Állítás 3"],
+            "friends": ["Egyik Barát", "Másik Barát"]
+        }
+    Ehhez egészítsd ki a 3. feladatban írt programot, hogy eltárolja az ott kapott "from" mező értékét a barátaid listájára.
+    
+    
+    
