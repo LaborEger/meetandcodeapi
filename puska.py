@@ -1,17 +1,14 @@
 from flask import Flask, Response, request
 import json
 
-# Response body json
+# Objektum átalakítása JSON-be
 body = {
-    "name": "Molnár Roland",
-    "statements": statements,
-    "friends": friends
+    "something": "valami"
 }
 response = Response(json.dumps(body))
 
 
 # Response header beállítás
-response = Response()
 response.headers['Content-Type'] = 'application/json; charset=utf-8'
 
 # Request body kiolvasás
